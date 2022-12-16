@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +38,38 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+LOCAL_APPS = [
+
+    # main
+    "apps.v1.main.users",
+    "apps.v1.main.directions",
+
+    # client_side
+    "apps.v1.client_side.about_us",
+    "apps.v1.client_side.achievements",
+    "apps.v1.client_side.our_team",
+    "apps.v1.client_side.our_mission",
+    "apps.v1.client_side.our_projects",
+
+    # development
+    "apps.v1.development.tasks",
+    "apps.v1.development.boards",
+
+    # internship
+    "apps.v1.internship.groups",
+    "apps.v1.internship.homeworks",
+    "apps.v1.internship.homeworks_answers",
+    "apps.v1.internship.homeworks_answers_comments",
+]
+
+
+THIRD_APPS = [
+    "parler",
+    "rest_framework",
+
+]
+
+INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -103,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -121,3 +153,15 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en', },
+        {'code': 'ru', },
+    ),
+    'default': {
+        'fallbacks': ['ru'],
+        'hide_untranslated': False,   # Default
+    }
+}
