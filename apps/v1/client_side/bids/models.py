@@ -1,29 +1,20 @@
 from django.db import models
 
-from utils.models import BaseModel
+from utils.models import BaseRequest
 
 
-class Bid(BaseModel):
-    first_name = models.CharField(
+class Bid(BaseRequest):
+    class InterestTypeChoice(models.TextChoices):
+        partner = "partner"
+        internship = "internship"
+        order_project = "order project"
+
+    stars = None
+
+    type = models.CharField(
         max_length=256,
-        verbose_name="first name"
-    )
-    last_name = models.CharField(
-        max_length=256,
-        verbose_name="last name"
-    )
-    phone_number = models.CharField(
-        max_length=256,
-        verbose_name="phone number"
-    )
-    email = models.EmailField(
-        verbose_name="email"
-    )
-    message = models.TextField(
-        verbose_name="message"
-    )
-    stars = models.PositiveSmallIntegerField(
-        verbose_name="stars count"
+        choices=InterestTypeChoice.choices,
+        verbose_name="request type"
     )
 
     def __str__(self):

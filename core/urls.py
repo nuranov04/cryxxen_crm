@@ -38,7 +38,7 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
-api_urlpatterns_v1 = [
+client_side_api_urlpatterns_v1 = [
     path("about_us/", include("apps.v1.client_side.about_us.urls")),
     path("achievements/", include("apps.v1.client_side.achievements.urls")),
     path("projetcs/", include("apps.v1.client_side.our_projects.urls")),
@@ -49,7 +49,8 @@ api_urlpatterns_v1 = [
     path("reviews/", include("apps.v1.client_side.reviews.urls")),
 ]
 
-docs_urlpatterns = [
+
+docs_api_urlpatterns = [
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
@@ -62,10 +63,10 @@ auth_urlpatterns = [
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path("api/v1/", include(api_urlpatterns_v1)),
+    path("api/v1_client/", include(client_side_api_urlpatterns_v1)),
 
     # docs
-    path("api/", include(docs_urlpatterns)),
+    path("api/", include(docs_api_urlpatterns)),
 
     # jwt auth
     path("api/", include(auth_urlpatterns)),
