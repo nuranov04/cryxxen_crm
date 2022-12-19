@@ -7,12 +7,12 @@ import uuid
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('our_team', '0001_initial'),
+        ('bids', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='team',
+            model_name='bid',
             name='id',
             field=models.UUIDField(default=uuid.UUID('a1964949-3ad2-4a9d-8ca6-09378eb6080c'), primary_key=True, serialize=False, unique=True),
         ),
