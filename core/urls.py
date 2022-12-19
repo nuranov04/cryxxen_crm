@@ -46,6 +46,7 @@ api_urlpatterns_v1 = [
     path("services/", include("apps.v1.client_side.our_services.urls")),
     path("mission/", include("apps.v1.client_side.our_mission.urls")),
     path("requests/", include("apps.v1.client_side.bids.urls")),
+    path("reviews/", include("apps.v1.client_side.reviews.urls")),
 ]
 
 docs_urlpatterns = [
