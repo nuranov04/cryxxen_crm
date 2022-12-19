@@ -10,5 +10,4 @@ class ReviewApiViewSet(GenericViewSet,
                        CreateModelMixin):
     queryset = Review.objects.all()
     serializer_class = ReviewSerializer
-    print(sum([ins.stars for ins in Review.objects.all()])/Review.objects.all().count())
 
