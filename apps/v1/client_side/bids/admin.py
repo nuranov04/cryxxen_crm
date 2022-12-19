@@ -1,3 +1,16 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.v1.client_side.bids.models import Bid
+
+
+@admin.register(Bid)
+class BidAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "first_name",
+        "last_name",
+        "phone_number",
+        "email",
+        "message",
+        "type",
+    )

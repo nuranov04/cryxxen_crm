@@ -15,3 +15,6 @@ class Project(BaseModel):
     def __str__(self):
         return str(self.id)
 
+    class Meta:
+        verbose_name = "Our project"
+        verbose_name_plural = "Our projects"

@@ -1,11 +1,9 @@
 from django.db import models
-from django.utils.translation import gettext as _
-from parler.models import TranslatableModel, TranslatedFields
 
 from utils.models import BaseModel
 
 
-class OurMission(BaseModel, TranslatableModel):
+class OurMission(BaseModel):
     content = models.TextField(
         verbose_name="Our Mission"
     )
