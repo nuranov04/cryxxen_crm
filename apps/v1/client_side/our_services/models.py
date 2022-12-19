@@ -4,7 +4,7 @@ from utils.models import BaseModel
 
 
 class Service(BaseModel):
-    icon = models.FileField(
+    icon = models.URLField(
         verbose_name="icon"
     )
     title = models.CharField(
