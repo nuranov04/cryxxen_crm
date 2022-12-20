@@ -22,4 +22,4 @@ class ReviewSerializer(ModelSerializer):
 
     def get_total_stars(self, *args, **kwargs):
         objects = Review.objects.values("stars")
-        return sum([ins["stars"] for ins in objects])
+        return round(sum([ins["stars"] for ins in objects]) / len(objects), 2)
