@@ -19,7 +19,7 @@ class BaseModel(models.Model):
 
 
 class BaseRequest(BaseModel):
-    stars = models.PositiveSmallIntegerField(
+    stars = models.FloatField(
         verbose_name="stars count"
     )
     first_name = models.CharField(
