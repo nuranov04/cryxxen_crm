@@ -47,6 +47,7 @@ client_side_api_urlpatterns_v1 = [
     path("mission/", include("apps.v1.client_side.our_mission.urls")),
     path("requests/", include("apps.v1.client_side.bids.urls")),
     path("reviews/", include("apps.v1.client_side.reviews.urls")),
+    path("partners/", include("apps.v1.client_side.partners.urls")),
 ]
 
 

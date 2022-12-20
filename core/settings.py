@@ -48,6 +48,7 @@ LOCAL_APPS = [
     "apps.v1.client_side.bids",
     "apps.v1.client_side.our_services",
     "apps.v1.client_side.reviews",
+    "apps.v1.client_side.partners",
 
     # development
     "apps.v1.development.tasks",
