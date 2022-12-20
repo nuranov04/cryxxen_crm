@@ -10,6 +10,9 @@ class Team(BaseModel):
         designer = "Designer"
         android = "Android Developer"
         ios = "Ios Developer"
+        tech_lead = "Tech Lead"
+        ceo = "CEO"
+        pm = "PM"
 
     first_name = models.CharField(
         verbose_name="first name",
