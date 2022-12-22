@@ -62,10 +62,10 @@ LOCAL_APPS = [
 ]
 
 THIRD_APPS = [
-    "parler",
+    "modeltranslation",
     "rest_framework",
-    'drf_yasg',
-    'rest_framework_simplejwt',
+    "drf_yasg",
+    "rest_framework_simplejwt",
     "corsheaders"
 ]
 
@@ -153,23 +153,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-PARLER_DEFAULT_LANGUAGE_CODE = "ru"
-# PARLER_ENABLE_CACHING = True
-# PARLER_SHOW_EXCLUDED_LANGUAGE_TABS = False
-
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ru'
 CORS_ALLOW_ALL_ORIGINS = True
-
-PARLER_LANGUAGES = {
-    None: (
-        {'code': 'en', },
-        {'code': 'ru', },
-    ),
-    'default': {
-        'fallbacks': ['ru'],
-        'hide_untranslated': False,  # Default
-    }
-}
 
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
@@ -188,3 +173,11 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
     'AUTH_HEADER_TYPES': ('JWT',),
 }
+
+gettext = lambda s: s
+
+LANGUAGES = (
+    ('ru', gettext('Russian')),
+)
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'

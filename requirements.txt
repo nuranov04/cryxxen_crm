@@ -5,8 +5,7 @@ coreapi==2.3.3
 coreschema==0.0.4
 Django==4.1.4
 django-cors-headers==3.13.0
-django-parler==2.3
-django-parler-rest==2.2
+django-modeltranslation==0.18.7
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.2.2
 drf-yasg==1.21.4
@@ -25,5 +24,6 @@ ruamel.yaml==0.17.21
 ruamel.yaml.clib==0.2.7
 six==1.16.0
 sqlparse==0.4.3
+typing_extensions==4.4.0
 uritemplate==4.1.1
 urllib3==1.26.13

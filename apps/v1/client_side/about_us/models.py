@@ -1,14 +1,10 @@
 from django.db import models
-from django.utils.translation import gettext as _
-from parler.models import TranslatableModel, TranslatedFields
 
 from utils.models import BaseModel
 
 
 class AboutUs(BaseModel):
-    content = models.TextField(
-        verbose_name="About Us"
-    )
+    content = models.TextField(verbose_name="content")
     image = models.FileField()
 
     def __str__(self):
@@ -19,5 +15,5 @@ class AboutUs(BaseModel):
             return super().save(*args, **kwargs)
 
     class Meta:
-        verbose_name = _("About Us", )
-        verbose_name_plural = _("About Us", )
+        verbose_name = "About Us",
+        verbose_name_plural = "About Us"

@@ -9,16 +9,7 @@ class ReviewSerializer(ModelSerializer):
     class Meta:
         model = Review
         read_only_fields = ("id",)
-        fields = (
-            "id",
-            "total_stars",
-            "stars",
-            "first_name",
-            "last_name",
-            "phone_number",
-            "email",
-            "message",
-        )
+        fields = "__all__"
 
     def get_total_stars(self, *args, **kwargs):
         objects = Review.objects.values("stars")

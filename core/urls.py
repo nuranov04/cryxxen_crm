@@ -41,7 +41,7 @@ schema_view = get_schema_view(
 client_side_api_urlpatterns_v1 = [
     path("about_us/", include("apps.v1.client_side.about_us.urls")),
     path("achievements/", include("apps.v1.client_side.achievements.urls")),
-    path("projetcs/", include("apps.v1.client_side.our_projects.urls")),
+    path("projects/", include("apps.v1.client_side.our_projects.urls")),
     path("team/", include("apps.v1.client_side.our_team.urls")),
     path("services/", include("apps.v1.client_side.our_services.urls")),
     path("mission/", include("apps.v1.client_side.our_mission.urls")),
