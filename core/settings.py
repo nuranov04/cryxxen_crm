@@ -36,29 +36,32 @@ DJANGO_APPS = [
 LOCAL_APPS = [
 
     # main
-    "apps.v1.main.users",
-    "apps.v1.main.directions",
+    "apps.main.users",
+    "apps.main.roles",
+    "apps.main.directions",
 
     # client_side
-    "apps.v1.client_side.about_us",
-    "apps.v1.client_side.achievements",
-    "apps.v1.client_side.our_team",
-    "apps.v1.client_side.our_mission",
-    "apps.v1.client_side.our_projects",
-    "apps.v1.client_side.bids",
-    "apps.v1.client_side.our_services",
-    "apps.v1.client_side.reviews",
-    "apps.v1.client_side.partners",
+    "apps.client_side.about_us",
+    "apps.client_side.achievements",
+    "apps.client_side.our_team",
+    "apps.client_side.our_mission",
+    "apps.client_side.our_projects",
+    "apps.client_side.bids",
+    "apps.client_side.our_services",
+    "apps.client_side.reviews",
+    "apps.client_side.partners",
 
     # development
-    "apps.v1.development.tasks",
-    "apps.v1.development.boards",
+    "apps.development.tasks",
+    "apps.development.boards",
 
     # internship
-    "apps.v1.internship.groups",
-    "apps.v1.internship.homeworks",
-    "apps.v1.internship.homeworks_answers",
-    "apps.v1.internship.homeworks_answers_comments",
+    "apps.internship.groups",
+    "apps.internship.reports",
+    "apps.internship.homeworks",
+    "apps.internship.homeworks_answers",
+    "apps.internship.homeworks_types",
+    "apps.internship.homeworks_answers_comments",
 ]
 
 THIRD_APPS = [
@@ -181,3 +184,26 @@ LANGUAGES = (
 )
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
+AUTH_USER_MODEL = "users.User"
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/db.log',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': 'DEBUG',
+        },
+    },
+    'root': {
+        'handlers': ['file'],
+    }
+}
