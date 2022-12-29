@@ -3,14 +3,16 @@ from django.db import models
 
 from apps.internship.homeworks_answers.models import Answer
 
+User = get_user_model()
 
-class Comments(models.Model):
+
+class Comment(models.Model):
     answer = models.ForeignKey(
         Answer,
         on_delete=models.CASCADE
     )
     user = models.ForeignKey(
-        get_user_model(),
+        User,
         on_delete=models.CASCADE
     )
     comment = models.CharField(

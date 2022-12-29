@@ -1,4 +1,10 @@
+from django.contrib.auth import get_user_model
 from django.db import models
+
+from apps.internship.groups.models import Bunch
+from apps.internship.homeworks_types.models import HomeworkType
+
+User = get_user_model()
 
 
 class Homework(models.Model):
@@ -11,19 +17,20 @@ class Homework(models.Model):
         auto_now_add=True
     )
     creator = models.ForeignKey(
-        "User",
+        User,
         on_delete=models.DO_NOTHING,
         related_name="creator"
     )
     type = models.ForeignKey(
-        "HomeworkType",
-        on_delete=models.SET_NULL,
-        related_name="homework_type"
+        HomeworkType,
+        on_delete=models.SET_DEFAULT,
+        related_name="homework_type",
+        default=1
     )
     group = models.ForeignKey(
-        "Class",
+        Bunch,
         on_delete=models.CASCADE,
-        related_name="group_homeworks"
+        related_name="homeworks"
     )
 
     def __str__(self):
@@ -49,4 +56,3 @@ class HomeworkUrl(models.Model):
     class Meta:
         verbose_name = "Homework Url"
         verbose_name_plural = "Homework Urls"
-

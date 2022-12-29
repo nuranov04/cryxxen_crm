@@ -1,3 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Direction
+from apps.internship.groups.admin import BunchInline
+
+
+@admin.register(Direction)
+class CourseAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "title",
+    )
+    inlines = [
+        BunchInline
+    ]

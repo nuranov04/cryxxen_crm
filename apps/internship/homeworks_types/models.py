@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.internship.groups.models import Class
+from apps.internship.groups.models import Bunch
 
 
 class HomeworkType(models.Model):
@@ -8,7 +8,7 @@ class HomeworkType(models.Model):
         max_length=256
     )
     group = models.ForeignKey(
-        Class,
+        Bunch,
         on_delete=models.CASCADE,
         related_name="group_homeworks_types"
     )
@@ -17,6 +17,6 @@ class HomeworkType(models.Model):
         return self.title, self.group.title
 
     class Meta:
-        verbose_name = "Типы Домашних заданий"
-        verbose_name_plural = "Типы Домашних заданий"
+        verbose_name = "Homework type"
+        verbose_name_plural = "Homework types"
         ordering = ("title",)

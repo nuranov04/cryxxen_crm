@@ -1,23 +1,23 @@
 from django.db import models
 
-from apps.main.directions.models import Course
+from apps.main.directions.models import Direction
 
 
-class Class(models.Model):
+class Bunch(models.Model):
     title = models.CharField(
         max_length=256
     )
-    duration = models.ForeignKey(
-        Course,
+    direction = models.ForeignKey(
+        Direction,
         on_delete=models.CASCADE,
-        related_name="groups"
+        related_name="classes"
     )
 
     class Meta:
-        verbose_name = "Group"
-        verbose_name_plural = "Groups"
+        verbose_name = "Class"
+        verbose_name_plural = "Class"
 
     def save(self, *args, **kwargs):
-        if Class.objects.filter(title=self.title).count() > 1:
+        if Bunch.objects.filter(title=self.title).count() > 1:
             raise "You can't create two similar objects"
         return super().save(*args, **kwargs)

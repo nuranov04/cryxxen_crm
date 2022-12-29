@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Course(models.Model):
+class Direction(models.Model):
     title = models.CharField(
         max_length=256
     )

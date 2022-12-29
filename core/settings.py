@@ -37,6 +37,7 @@ LOCAL_APPS = [
 
     # main
     "apps.main.users",
+    "apps.main.roles",
     "apps.main.directions",
 
     # client_side
@@ -56,8 +57,10 @@ LOCAL_APPS = [
 
     # internship
     "apps.internship.groups",
+    "apps.internship.reports",
     "apps.internship.homeworks",
     "apps.internship.homeworks_answers",
+    "apps.internship.homeworks_types",
     "apps.internship.homeworks_answers_comments",
 ]
 
@@ -183,12 +186,16 @@ LANGUAGES = (
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 AUTH_USER_MODEL = "users.User"
 
-
 LOGGING = {
     'version': 1,
     'handlers': {
         'console': {
             'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/db.log',
         },
     },
     'loggers': {
@@ -197,6 +204,6 @@ LOGGING = {
         },
     },
     'root': {
-        'handlers': ['console'],
+        'handlers': ['file'],
     }
 }

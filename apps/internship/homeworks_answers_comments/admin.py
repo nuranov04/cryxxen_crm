@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Comment
+
+
+class CommentInline(admin.TabularInline):
+    model = Comment
+    extra = 2

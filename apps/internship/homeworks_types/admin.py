@@ -1,3 +1,17 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import HomeworkType
+
+
+@admin.register(HomeworkType)
+class HomeworkTypeAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "title",
+        "group",
+    )
+
+
+class HomeworkTypeInline(admin.TabularInline):
+    model = HomeworkType
+    extra = 1

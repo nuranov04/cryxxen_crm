@@ -1,12 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+
+from apps.main.roles.models import Role
 from apps.main.users.managers import CustomUserManager
 
 
 class User(AbstractUser):
 
     status = models.ManyToManyField(
-        "Role",
+        Role,
     )
     email = models.EmailField(
         unique=True
