@@ -1,6 +1,9 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 
 from apps.main.directions.models import Direction
+
+User = get_user_model()
 
 
 class Bunch(models.Model):
@@ -11,6 +14,11 @@ class Bunch(models.Model):
         Direction,
         on_delete=models.CASCADE,
         related_name="classes"
+    )
+    members = models.ManyToManyField(
+        User,
+        related_name="members",
+
     )
 
     class Meta:

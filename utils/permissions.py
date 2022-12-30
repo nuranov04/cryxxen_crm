@@ -9,7 +9,7 @@ class UserTypes:
     guest = 5
 
 
-class IsInter(BasePermission):
+class IsIntern(BasePermission):
     def has_permission(self, request, view):
         return bool(request.user.status.id == UserTypes.intern)
 

@@ -14,6 +14,6 @@ class Direction(models.Model):
         verbose_name_plural = "Directions"
 
     def save(self, *args, **kwargs):
-        if Course.objects.filter(title=self.title).count() > 1:
+        if Direction.objects.filter(title=self.title).count() > 1:
             raise "You can't create two similar objects"
         return super().save(*args, **kwargs)

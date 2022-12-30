@@ -1,9 +1,9 @@
 from rest_framework.serializers import ModelSerializer
 
-from .models import Answer
+from .models import Direction
 
 
-class AnswerSerializer(ModelSerializer):
+class DirectionSerializer(ModelSerializer):
     class Meta:
-        model = Answer
+        model = Direction
         fields = "__all__"
