@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 
-from .views import HomeWorkApiViewSet, HomeworkUrlApiViewSet
+from apps.internship.homeworks.views import HomeWorkApiViewSet, HomeworkUrlApiViewSet
 
 
 router = DefaultRouter()

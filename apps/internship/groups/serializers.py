@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
 
-from .models import Bunch
+from apps.internship.groups.models import Bunch
 from apps.main.directions.serializers import DirectionSerializer
 from apps.internship.homeworks.serializers import HomeworkSerializer
 

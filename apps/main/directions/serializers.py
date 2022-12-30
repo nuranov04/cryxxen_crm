@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from .models import Direction
+from apps.main.directions.models import Direction
 
 
 class DirectionSerializer(ModelSerializer):

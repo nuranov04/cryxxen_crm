@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 
-from .views import UserApiViewSet
+from apps.main.users.views import UserApiViewSet
 
 router = DefaultRouter()
 router.register(

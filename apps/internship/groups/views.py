@@ -3,8 +3,8 @@ from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
 from utils.permissions import IsIntern
-from .models import Bunch
-from .serializers import BunchSerializer, BunchRetrieveSerializer
+from apps.internship.groups.models import Bunch
+from apps.internship.groups.serializers import BunchSerializer, BunchRetrieveSerializer
 
 
 class BunchApiViewSet(GenericViewSet,

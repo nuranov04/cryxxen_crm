@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import HomeworkType
+from apps.internship.homeworks_types.models import HomeworkType
 
 
 @admin.register(HomeworkType)
