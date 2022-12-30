@@ -18,7 +18,6 @@ class Bunch(models.Model):
     members = models.ManyToManyField(
         User,
         related_name="members",
-
     )
 
     class Meta:
