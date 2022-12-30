@@ -6,9 +6,12 @@ from apps.main.users.managers import CustomUserManager
 
 
 class User(AbstractUser):
-
-    status = models.ManyToManyField(
+    status = models.ForeignKey(
         Role,
+        on_delete=models.DO_NOTHING,
+        related_name="users",
+        blank=True, null=True,
+        default=5,
     )
     email = models.EmailField(
         unique=True
@@ -21,7 +24,7 @@ class User(AbstractUser):
         max_length=256
     )
     rating = models.PositiveSmallIntegerField(
-        default=100
+        default=10
     )
     created_at = models.DateTimeField(
         auto_now_add=True
@@ -30,7 +33,7 @@ class User(AbstractUser):
     objects = CustomUserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["first_name", "last_name"]
+    REQUIRED_FIELDS = []
 
     class Meta:
         verbose_name = "User"

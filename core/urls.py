@@ -24,9 +24,6 @@ schema_view = get_schema_view(
     permission_classes=[permissions.AllowAny],
 )
 
-docs_api_urlpatterns = [
-]
-
 auth_urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
@@ -34,6 +31,7 @@ auth_urlpatterns = [
 ]
 
 client_side_api_urlpatterns_v1 = [
+    # client side
     path("about_us/", include("apps.client_side.about_us.urls")),
     path("achievements/", include("apps.client_side.achievements.urls")),
     path("projects/", include("apps.client_side.our_projects.urls")),
@@ -43,6 +41,13 @@ client_side_api_urlpatterns_v1 = [
     path("requests/", include("apps.client_side.bids.urls")),
     path("reviews/", include("apps.client_side.reviews.urls")),
     path("partners/", include("apps.client_side.partners.urls")),
+
+    # internship side
+    path("groups/", include("apps.internship.groups.urls")),
+    path("", include("apps.internship.homeworks.urls")),
+
+    # main side
+    path("", include("apps.main.users.urls")),
 
     # docs
     path(
@@ -63,7 +68,7 @@ client_side_api_urlpatterns_v1 = [
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path("api/v1/client/", include(client_side_api_urlpatterns_v1)),
+    path("api/v1/", include(client_side_api_urlpatterns_v1)),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

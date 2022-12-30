@@ -69,7 +69,7 @@ THIRD_APPS = [
     "rest_framework",
     "drf_yasg",
     "rest_framework_simplejwt",
-    "corsheaders"
+    "corsheaders",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_APPS

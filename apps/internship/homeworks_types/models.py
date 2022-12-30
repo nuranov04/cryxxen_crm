@@ -14,7 +14,7 @@ class HomeworkType(models.Model):
     )
 
     def __str__(self):
-        return self.title, self.group.title
+        return self.title
 
     class Meta:
         verbose_name = "Homework type"

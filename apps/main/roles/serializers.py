@@ -1,9 +1,10 @@
 from rest_framework.serializers import ModelSerializer
 
-from .models import Answer
+from .models import Role
 
 
-class AnswerSerializer(ModelSerializer):
+class RoleSerializer(ModelSerializer):
     class Meta:
-        model = Answer
+        model = Role
         fields = "__all__"
+
