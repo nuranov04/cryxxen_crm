@@ -20,11 +20,6 @@ class Answer(models.Model):
     description = models.CharField(
         max_length=256
     )
-    url = models.ForeignKey(
-        'AnswerUrl',
-        on_delete=models.DO_NOTHING,
-        related_name='urls'
-    )
 
     def __str__(self):
         return f"{self.id} -- {self.description}"
@@ -35,6 +30,11 @@ class Answer(models.Model):
 
 
 class AnswerUrl(models.Model):
+    answer = models.ForeignKey(
+        'AnswerUrl',
+        on_delete=models.DO_NOTHING,
+        related_name='urls'
+    )
     url = models.URLField(
         verbose_name='answer_url'
     )
