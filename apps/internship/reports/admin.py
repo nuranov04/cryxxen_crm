@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Report
+from apps.internship.reports.models import Report
 
 
 @admin.register(Report)

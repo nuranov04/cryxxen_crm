@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Homework, HomeworkUrl
+from apps.internship.homeworks.models import Homework, HomeworkUrl
 from apps.internship.homeworks_answers.admin import AnswerInline
 
 

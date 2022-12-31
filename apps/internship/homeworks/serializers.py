@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 
-from .models import Homework, HomeworkUrl
+from apps.internship.homeworks.models import Homework, HomeworkUrl
 from apps.internship.homeworks_answers.serializers import AnswerSerializer
 
 

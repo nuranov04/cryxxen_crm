@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import Role
+from apps.main.roles.models import Role
 
 admin.site.register(Role)

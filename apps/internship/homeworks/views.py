@@ -1,8 +1,8 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
-from .models import Homework, HomeworkUrl
-from .serializers import HomeworkSerializer, HomeworkUrlSerializer, HomeworkDetailSerializer
+from apps.internship.homeworks.models import Homework, HomeworkUrl
+from apps.internship.homeworks.serializers import HomeworkSerializer, HomeworkUrlSerializer, HomeworkDetailSerializer
 
 
 class HomeWorkApiViewSet(GenericViewSet,

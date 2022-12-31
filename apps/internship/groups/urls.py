@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 
-from .views import BunchApiViewSet
+from apps.internship.groups.views import BunchApiViewSet
 
 router = DefaultRouter()
 router.register(

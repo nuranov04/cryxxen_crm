@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Direction
+from apps.main.directions.models import Direction
 from apps.internship.groups.admin import BunchInline
 
 

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Answer
+from apps.internship.homeworks_answers.models import Answer
 from apps.internship.homeworks_answers_comments.admin import CommentInline
 
 

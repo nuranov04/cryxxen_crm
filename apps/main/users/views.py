@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
 
-from .serializers import UserSerializer, UserShortInfoSerializer, UserDetailSerializer, ChangeUserPasswordSerializer
+from apps.main.users.serializers import UserSerializer, UserShortInfoSerializer, UserDetailSerializer, ChangeUserPasswordSerializer
 
 User = get_user_model()
 
