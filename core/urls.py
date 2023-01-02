@@ -46,6 +46,7 @@ client_side_api_urlpatterns_v1 = [
     path("groups/", include("apps.internship.groups.urls")),
     path("", include("apps.internship.homeworks.urls")),
     path("", include("apps.internship.homeworks_answers.urls")),
+    path("reports/", include("apps.internship.reports.urls")),
 
     # main side
     path("", include("apps.main.users.urls")),
