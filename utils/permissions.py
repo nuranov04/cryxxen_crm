@@ -11,19 +11,41 @@ class UserTypes:
 
 class IsIntern(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user and request.user.is_authenticated and request.user.status.id <= 4)
+        return bool(request.user and request.user.is_authenticated and request.user.status.id == UserTypes.intern)
 
 
 class IsMentor(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user.status.id == UserTypes.mentor)
+        return bool(request.user.is_authenticated and request.user.status.id == UserTypes.mentor)
 
 
 class IsTrainer(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user.status.id == UserTypes.trainer)
+        return bool(request.user.is_authenticated and request.user.status.id == UserTypes.trainer)
 
 
 class IsAdmin(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user.status.id == UserTypes.admin)
+        return bool(request.user.is_authenticated and request.user.status.id == UserTypes.admin)
+
+
+class GrMentor(BasePermission):
+    def has_permission(self, request, view):
+        return bool(request.user.is_authenticated and request.user.status.id <= UserTypes.mentor)
+
+
+class LsInter(BasePermission):
+
+    def has_permission(self, request, view):
+        return bool(request.user.is_authenticated and request.user.status.id >= UserTypes.intern)
+
+
+class AllowAny(BasePermission):
+    def has_permission(self, request, view):
+        return bool(request.user.is_authenticated and
+                    request.user.status.id in (
+                        UserTypes.intern,
+                        UserTypes.mentor,
+                        UserTypes.trainer,
+                        UserTypes.admin,
+                    ))

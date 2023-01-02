@@ -26,7 +26,6 @@ class HomeworkSerializer(ModelSerializer):
 
 class HomeworkDetailSerializer(ModelSerializer):
     links = HomeworkUrlSerializer(many=True, read_only=True)
-    # answers = AnswerDetailSerializer(many=True, read_only=True)
     answers = SerializerMethodField()
 
     class Meta:

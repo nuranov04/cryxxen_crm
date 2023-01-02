@@ -1,8 +1,8 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
-from .models import Comment
-from .serializers import CommentSerializer
+from apps.internship.homeworks_answers_comments.models import Comment
+from apps.internship.homeworks_answers_comments.serializers import CommentSerializer
 
 
 class CommentApiViewSet(GenericViewSet,

@@ -23,9 +23,9 @@ class Homework(models.Model):
     )
     type = models.ForeignKey(
         HomeworkType,
-        on_delete=models.SET_DEFAULT,
+        on_delete=models.DO_NOTHING,
         related_name="homework_type",
-        default=1
+        blank=True, null=True,
     )
     group = models.ForeignKey(
         Bunch,
