@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 
-from apps.internship.homeworks_answers.views import AnswerApiViewSet, AnswerUrlApiViewSet
+from apps.internship.homeworks_answers.views import AnswerApiViewSet, AnswerUrlsApiViewSet
 
 
 router = DefaultRouter()
@@ -11,7 +11,7 @@ router.register(
 
 router.register(
     prefix="answers_urls",
-    viewset=AnswerUrlApiViewSet
+    viewset=AnswerUrlsApiViewSet
 )
 
 urlpatterns = router.urls

@@ -9,7 +9,8 @@ User = get_user_model()
 class Comment(models.Model):
     answer = models.ForeignKey(
         Answer,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name="comments"
     )
     user = models.ForeignKey(
         User,

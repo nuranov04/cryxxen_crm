@@ -1,7 +1,8 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 
 from apps.internship.homeworks.models import Homework, HomeworkUrl
-from apps.internship.homeworks_answers.serializers import AnswerSerializer
+from apps.internship.homeworks_answers.serializers import AnswerDetailSerializer
+from apps.internship.homeworks_answers.models import Answer
 
 
 class HomeworkUrlSerializer(ModelSerializer):
@@ -25,11 +26,13 @@ class HomeworkSerializer(ModelSerializer):
 
 class HomeworkDetailSerializer(ModelSerializer):
     links = HomeworkUrlSerializer(many=True, read_only=True)
-    answers = AnswerSerializer(many=True, read_only=True)
+    # answers = AnswerDetailSerializer(many=True, read_only=True)
+    answers = SerializerMethodField()
 
     class Meta:
         model = Homework
         fields = "__all__"
 
-
-
+    def get_answers(self, obj):
+        queryset = Answer.objects.filter(homework_id=obj.id)
+        return AnswerDetailSerializer(queryset, many=True).data

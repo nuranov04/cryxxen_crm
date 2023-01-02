@@ -13,9 +13,9 @@ class BunchApiViewSet(GenericViewSet,
                       mixins.RetrieveModelMixin,
                       mixins.UpdateModelMixin,
                       mixins.DestroyModelMixin):
-    queryset = Bunch.objects.all().select_related("direction").prefetch_related("members")
+    queryset = Bunch.objects.all().prefetch_related("members").select_related("direction")
     serializer_class = BunchSerializer
-    permission_classes = [IsAuthenticated, IsIntern]
+    permission_classes = [IsIntern]
 
     def get_serializer_class(self):
         if self.action == "retrieve":

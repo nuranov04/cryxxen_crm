@@ -1,4 +1,4 @@
-from django.conf import settings
+from django.contrib.staticfiles.storage import ManifestStaticFilesStorage
 from storages.backends.s3boto3 import S3Boto3Storage
 
 
@@ -18,3 +18,8 @@ class PrivateMediaStorage(S3Boto3Storage):
     default_acl = 'private'
     file_overwrite = False
     custom_domain = False
+
+
+class LogsStorage(S3Boto3Storage):
+    location = "logs"
+    bucket_name = "crmcryxxen"
