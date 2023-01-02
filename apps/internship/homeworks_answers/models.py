@@ -31,7 +31,7 @@ class Answer(models.Model):
 
 class AnswerUrl(models.Model):
     answer = models.ForeignKey(
-        'AnswerUrl',
+        'Answer',
         on_delete=models.DO_NOTHING,
         related_name='urls'
     )

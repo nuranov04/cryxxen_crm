@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, password_validation
 
-from apps.internship.groups.serializers import BunchShortInfoSerializer
+# from apps.internship.groups.serializers import BunchShortInfoSerializer
 from apps.main.roles.serializers import RoleSerializer
 
 User = get_user_model()
@@ -29,13 +29,12 @@ class UserSerializer(serializers.ModelSerializer):
         # user_activation.delay(user.username, user.email)
         return user
 
-    def validate_password(self, value):
+    def validateStreamHandler_password(self, value):
         password_validation.validate_password(value)
         return value
 
 
 class UserDetailSerializer(serializers.ModelSerializer):
-    # members = BunchShortInfoSerializer(many=True, read_only=True)
     status = RoleSerializer(read_only=True)
 
     class Meta:

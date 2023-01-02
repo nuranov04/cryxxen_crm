@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from rest_framework.viewsets import GenericViewSet
+from rest_framework import mixins
 
-# Create your views here.
+from .models import Comment
+from .serializers import CommentSerializer
+
+
+class CommentApiViewSet(GenericViewSet,
+                        mixins.CreateModelMixin,
+                        mixins.UpdateModelMixin,
+                        mixins.DestroyModelMixin):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer

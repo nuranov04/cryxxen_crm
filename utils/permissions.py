@@ -11,7 +11,7 @@ class UserTypes:
 
 class IsIntern(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user.status.id == UserTypes.intern)
+        return bool(request.user and request.user.is_authenticated and request.user.status.id <= 4)
 
 
 class IsMentor(BasePermission):
