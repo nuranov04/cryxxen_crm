@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 from apps.internship.groups.models import Bunch
-from apps.internship.homeworks_types.models import HomeworkType
+# from apps.internship.homeworks_types.models import HomeworkType
 
 User = get_user_model()
 
@@ -21,12 +21,12 @@ class Homework(models.Model):
         on_delete=models.DO_NOTHING,
         related_name="creator"
     )
-    type = models.ForeignKey(
-        HomeworkType,
-        on_delete=models.DO_NOTHING,
-        related_name="homework_type",
-        blank=True, null=True,
-    )
+    # type = models.ForeignKey(
+    #     HomeworkType,
+    #     on_delete=models.DO_NOTHING,
+    #     related_name="homework_type",
+    #     blank=True, null=True,
+    # )
     group = models.ForeignKey(
         Bunch,
         on_delete=models.CASCADE,

@@ -17,7 +17,6 @@ class BunchSerializer(ModelSerializer):
             "id",
             "title",
             "direction",
-            "members",
             "total_members",
         )
 

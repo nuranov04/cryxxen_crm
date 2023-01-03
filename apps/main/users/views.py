@@ -7,7 +7,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
 
-from apps.main.users.serializers import UserSerializer, UserShortInfoSerializer, UserDetailSerializer, ChangeUserPasswordSerializer
+from apps.internship.groups.models import Bunch
+from apps.internship.groups.serializers import BunchSerializer
+from apps.main.users.serializers import UserSerializer, UserShortInfoSerializer, UserDetailSerializer, \
+    ChangeUserPasswordSerializer
 
 User = get_user_model()
 
@@ -73,12 +76,19 @@ class UserApiViewSet(ModelViewSet):
             {"detail": "Not correct password"}, status=status.HTTP_400_BAD_REQUEST
         )
 
-# class UserInfo(GenericViewSet,
-#                mixins.ListModelMixin):
-#     queryset = User.objects.all()
-#     serializer_class = UserDetailSerializer
-#     permission_classes = [IsAuthenticated]
-#
-#     def list(self, request, *args, **kwargs):
-#         queryset = User.objects.select_related("status").get(id=request.user.id)
-#         return Response(UserDetailSerializer(queryset).data)
+    @swagger_auto_schema(
+        operation_summary="Get user's groups",
+        method="get",
+        responses={
+            200: openapi.Response(
+                "Get user's groups",
+                BunchSerializer()
+            )
+        }
+    )
+    @action(
+        detail=False, methods=["get"], permission_classes=[IsAuthenticated],
+    )
+    def get_user_groups(self, request):
+        queryset = Bunch.objects.prefetch_related("members").filter(members=request.user)
+        return Response(BunchSerializer(queryset, many=True).data)

@@ -27,9 +27,3 @@ class BunchApiViewSet(GenericViewSet,
         if self.action == "retrieve":
             return BunchRetrieveSerializer
         return BunchSerializer
-
-    @action(
-        detail=False, methods=["get"]
-    )
-    def get_user_groups(self, request):
-        return Bunch.objects.filter(members_in=request.user)
