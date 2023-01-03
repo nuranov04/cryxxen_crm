@@ -1,8 +1,8 @@
-from rest_framework.viewsets import ModelViewSet, GenericViewSet
+from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
 from apps.internship.homeworks_answers.models import Answer, AnswerUrl
-from apps.internship.homeworks_answers.serializers import AnswerSerializer, AnswerUrlSerializer, AnswerDetailSerializer
+from apps.internship.homeworks_answers.serializers import AnswerSerializer, AnswerUrlSerializer
 
 
 class AnswerApiViewSet(GenericViewSet,
@@ -16,6 +16,7 @@ class AnswerApiViewSet(GenericViewSet,
 
 class AnswerUrlsApiViewSet(GenericViewSet,
                            mixins.CreateModelMixin,
+                           mixins.DestroyModelMixin
                            ):
     queryset = AnswerUrl.objects.all()
     serializer_class = AnswerUrlSerializer

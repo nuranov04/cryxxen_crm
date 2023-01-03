@@ -20,13 +20,11 @@ class HomeworkSerializer(ModelSerializer):
             "description",
             "deadline",
             "created_at",
-            "type",
         )
 
 
 class HomeworkDetailSerializer(ModelSerializer):
     links = HomeworkUrlSerializer(many=True, read_only=True)
-    # answers = AnswerDetailSerializer(many=True, read_only=True)
     answers = SerializerMethodField()
 
     class Meta:

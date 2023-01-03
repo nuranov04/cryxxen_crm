@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.internship.homeworks_types.admin import HomeworkTypeInline
+# from apps.internship.homeworks_types.admin import HomeworkTypeInline
 from apps.internship.homeworks.admin import HomeworkInline
 from apps.internship.groups.models import Bunch
 
@@ -13,7 +13,7 @@ class BunchAdmin(admin.ModelAdmin):
         "direction",
     )
     inlines = [
-        HomeworkTypeInline,
+        # HomeworkTypeInline,
         HomeworkInline,
     ]
 
