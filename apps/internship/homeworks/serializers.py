@@ -20,7 +20,6 @@ class HomeworkSerializer(ModelSerializer):
             "description",
             "deadline",
             "created_at",
-            "type",
         )
 
 
