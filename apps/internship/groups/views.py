@@ -13,8 +13,7 @@ class BunchApiViewSet(GenericViewSet,
                       mixins.RetrieveModelMixin,
                       mixins.UpdateModelMixin,
                       mixins.DestroyModelMixin):
-    queryset = Bunch.objects.all().prefetch_related(
-        "members").select_related("direction")
+    queryset = Bunch.objects.all().prefetch_related("members").select_related("direction")
     serializer_class = BunchSerializer
     permission_classes = [permissions.IsIntern]
 

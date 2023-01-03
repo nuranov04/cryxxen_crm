@@ -57,7 +57,7 @@ LOCAL_APPS = [
     "apps.internship.reports",
     "apps.internship.homeworks",
     "apps.internship.homeworks_answers",
-    "apps.internship.homeworks_types",
+    # "apps.internship.homeworks_types",
     "apps.internship.homeworks_answers_comments",
 ]
 
