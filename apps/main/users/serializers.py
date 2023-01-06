@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model, password_validation
 
-# from apps.internship.groups.serializers import BunchShortInfoSerializer
 from apps.main.roles.serializers import RoleSerializer
 
 User = get_user_model()
@@ -48,7 +47,7 @@ class UserDetailSerializer(serializers.ModelSerializer):
             "first_name",
             "last_name",
             "rating",
-            "groups",
+            # "groups",
         )
 
 

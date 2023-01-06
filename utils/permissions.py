@@ -33,10 +33,13 @@ class GrMentor(BasePermission):
     def has_permission(self, request, view):
         return bool(request.user.is_authenticated and request.user.status.id <= UserTypes.mentor)
 
+
 class GrInter(BasePermission):
 
     def has_permission(self, request, view):
         return bool(request.user.is_authenticated and request.user.status.id <= UserTypes.intern)
+
+
 class LsInter(BasePermission):
 
     def has_permission(self, request, view):

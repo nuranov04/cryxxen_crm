@@ -3,6 +3,7 @@ from rest_framework import mixins
 
 from apps.internship.homeworks_answers.models import Answer, AnswerUrl
 from apps.internship.homeworks_answers.serializers import AnswerSerializer, AnswerUrlSerializer
+from utils.permissions import IsIntern
 
 
 class AnswerApiViewSet(GenericViewSet,
@@ -12,6 +13,7 @@ class AnswerApiViewSet(GenericViewSet,
                        ):
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
+    permission_classes = [IsIntern]
 
 
 class AnswerUrlsApiViewSet(GenericViewSet,
@@ -20,3 +22,4 @@ class AnswerUrlsApiViewSet(GenericViewSet,
                            ):
     queryset = AnswerUrl.objects.all()
     serializer_class = AnswerUrlSerializer
+    permission_classes = [IsIntern]
