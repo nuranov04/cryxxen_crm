@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField
 
 from apps.internship.homeworks.models import Homework, HomeworkUrl
-from apps.internship.homeworks_answers.serializers import AnswerDetailSerializer
+from apps.internship.homeworks_answers.serializers import AnswerRetrieveSerializer
 from apps.internship.homeworks_answers.models import Answer
 
 
@@ -33,4 +33,4 @@ class HomeworkDetailSerializer(ModelSerializer):
 
     def get_answers(self, obj):
         queryset = Answer.objects.filter(homework_id=obj.id)
-        return AnswerDetailSerializer(queryset, many=True).data
+        return AnswerRetrieveSerializer(queryset, many=True).data

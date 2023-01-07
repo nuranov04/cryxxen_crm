@@ -57,7 +57,7 @@ LOCAL_APPS = [
     "apps.internship.reports",
     "apps.internship.homeworks",
     "apps.internship.homeworks_answers",
-    "apps.internship.homeworks_types",
+    # "apps.internship.homeworks_types",
     "apps.internship.homeworks_answers_comments",
 ]
 
@@ -107,6 +107,14 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': config('POSTGRES_DB'),
+    #     'USER': config('POSTGRES_USER'),
+    #     'PASSWORD': config('POSTGRES_PASSWORD'),
+    #     'HOST': config('POSTGRES_HOST'),
+    #     'PORT': '5432',
+    # },
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': "CRYXXEN_CRM",

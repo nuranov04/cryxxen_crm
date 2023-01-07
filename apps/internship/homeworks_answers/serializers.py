@@ -11,7 +11,7 @@ class AnswerUrlSerializer(ModelSerializer):
         fields = "__all__"
 
 
-class AnswerDetailSerializer(ModelSerializer):
+class AnswerRetrieveSerializer(ModelSerializer):
     urls = SerializerMethodField()
     comments = SerializerMethodField()
 

@@ -18,13 +18,9 @@ class Bunch(models.Model):
     members = models.ManyToManyField(
         User,
         related_name="members",
+        blank=True
     )
 
     class Meta:
         verbose_name = "Class"
-        verbose_name_plural = "Class"
-
-    def save(self, *args, **kwargs):
-        if Bunch.objects.filter(title=self.title).count() > 1:
-            raise "You can't create two similar objects"
-        return super().save(*args, **kwargs)
+        verbose_name_plural = "Classes"
