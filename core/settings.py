@@ -51,6 +51,7 @@ LOCAL_APPS = [
     # development
     "apps.development.tasks",
     "apps.development.boards",
+    "apps.development.statuses",
 
     # internship
     "apps.internship.groups",

@@ -26,8 +26,7 @@ services:
       - my-network
     depends_on:
       - db
-    env_file:en = RefreshToken(refresh_token)
-            token.blacklist()
+    env_file:
       - ./.env
 
   nginx:
