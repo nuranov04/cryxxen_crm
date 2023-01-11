@@ -49,6 +49,10 @@ client_side_api_urlpatterns_v1 = [
     path("comments/", include("apps.internship.homeworks_answers_comments.urls")),
     path("reports/", include("apps.internship.reports.urls")),
 
+    # development side
+
+    path("boards/", include("apps.development.boards.urls")),
+
     # main side
     path("", include("apps.main.users.urls")),
 

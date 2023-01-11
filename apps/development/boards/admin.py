@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from apps.development.boards.models import Board
+from apps.development.boards.models import Board, Task, Status
 
 admin.site.register(Board)
-
