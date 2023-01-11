@@ -8,7 +8,7 @@ from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
 
 from apps.internship.groups.models import Bunch
-from apps.internship.groups.serializers import BunchSerializer, BunchRetrieveSerializer
+from apps.internship.groups.serializers import BunchRetrieveSerializer
 from utils import permissions
 from apps.main.users.serializers import (
     UserSerializer,
@@ -80,24 +80,6 @@ class UserApiViewSet(ModelViewSet):
         return Response(
             {"detail": "Not correct password"}, status=status.HTTP_400_BAD_REQUEST
         )
-
-    # @swagger_auto_schema(
-    #     operation_summary="Get user's groups",
-    #     method="get",
-    #     responses={
-    #         200: openapi.Response(
-    #             "Get user's groups",
-    #             BunchSerializer()
-    #         )
-    #     }
-    # )
-    # @action(
-    #     detail=False, methods=["get"], permission_classes=[IsAuthenticated],
-    # )
-    # def get_user_groups(self, request):
-    #     queryset = Bunch.objects.prefetch_related("members").filter(members=request.user)
-    #     return Response(BunchSerializer(queryset, many=True).data)
-    #
 
     @action(
         methods=["GET"], detail=False, url_path="intern_groups", permission_classes=[permissions.IsIntern]
