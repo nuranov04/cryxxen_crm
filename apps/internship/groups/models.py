@@ -10,6 +10,10 @@ class Bunch(models.Model):
     title = models.CharField(
         max_length=256
     )
+    mentors = models.ManyToManyField(
+        User,
+        related_name="mentors",
+    )
     direction = models.ForeignKey(
         Direction,
         on_delete=models.CASCADE,
@@ -18,7 +22,7 @@ class Bunch(models.Model):
     members = models.ManyToManyField(
         User,
         related_name="members",
-        blank=True
+        blank=True,
     )
 
     class Meta:

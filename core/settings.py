@@ -49,7 +49,6 @@ LOCAL_APPS = [
     "apps.client_side.partners",
 
     # development
-    "apps.development.tasks",
     "apps.development.boards",
 
     # internship
@@ -188,27 +187,27 @@ LANGUAGES = (
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 AUTH_USER_MODEL = "users.User"
 
-# LOGGING = {
-#     'version': 1,
-#     'handlers': {
-#         'console': {
-#             'class': 'logging.StreamHandler',
-#         },
-#         'file': {
-#             'level': 'DEBUG',
-#             'class': 'logging.FileHandler',
-#             'filename': 'media/logs/db.log',
-#         },
-#     },
-#     'loggers': {
-#         'django.db.backends': {
-#             'level': 'DEBUG',
-#         },
-#     },
-#     'root': {
-#         'handlers': ['file'],
-#     }
-# }
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'media/logs/db.log',
+        },
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': 'DEBUG',
+        },
+    },
+    'root': {
+        'handlers': ['file'],
+    }
+}
 
 USE_S3 = config('USE_S3') == 'TRUE'
 if USE_S3:

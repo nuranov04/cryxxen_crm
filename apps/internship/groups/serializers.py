@@ -10,6 +10,7 @@ from apps.main.users.serializers import UserShortInfoSerializer
 class BunchSerializer(ModelSerializer):
     direction = DirectionSerializer()
     total_members = SerializerMethodField()
+    total_mentors = SerializerMethodField()
 
     class Meta:
         model = Bunch
@@ -17,17 +18,21 @@ class BunchSerializer(ModelSerializer):
             "id",
             "title",
             "direction",
+            "total_mentors",
             "total_members",
         )
 
     def get_total_members(self, obj):
         return obj.members.all().count()
 
+    def get_total_mentors(self, obj):
+        return obj.mentors.all().count()
 
-class BunchRetrieveSerializer(ModelSerializer):
-    direction = DirectionSerializer()
+
+class BunchRetrieveSerializer(BunchSerializer):
     homeworks = SerializerMethodField(read_only=True)
     members = SerializerMethodField(read_only=True)
+    mentors = UserShortInfoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Bunch

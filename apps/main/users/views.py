@@ -8,9 +8,14 @@ from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
 
 from apps.internship.groups.models import Bunch
-from apps.internship.groups.serializers import BunchSerializer
-from apps.main.users.serializers import UserSerializer, UserShortInfoSerializer, UserDetailSerializer, \
+from apps.internship.groups.serializers import BunchSerializer, BunchRetrieveSerializer
+from utils import permissions
+from apps.main.users.serializers import (
+    UserSerializer,
+    UserShortInfoSerializer,
+    UserDetailSerializer,
     ChangeUserPasswordSerializer
+)
 
 User = get_user_model()
 
@@ -76,19 +81,31 @@ class UserApiViewSet(ModelViewSet):
             {"detail": "Not correct password"}, status=status.HTTP_400_BAD_REQUEST
         )
 
-    @swagger_auto_schema(
-        operation_summary="Get user's groups",
-        method="get",
-        responses={
-            200: openapi.Response(
-                "Get user's groups",
-                BunchSerializer()
-            )
-        }
-    )
+    # @swagger_auto_schema(
+    #     operation_summary="Get user's groups",
+    #     method="get",
+    #     responses={
+    #         200: openapi.Response(
+    #             "Get user's groups",
+    #             BunchSerializer()
+    #         )
+    #     }
+    # )
+    # @action(
+    #     detail=False, methods=["get"], permission_classes=[IsAuthenticated],
+    # )
+    # def get_user_groups(self, request):
+    #     queryset = Bunch.objects.prefetch_related("members").filter(members=request.user)
+    #     return Response(BunchSerializer(queryset, many=True).data)
+    #
+
     @action(
-        detail=False, methods=["get"], permission_classes=[IsAuthenticated],
+        methods=["GET"], detail=False, url_path="intern_groups", permission_classes=[permissions.IsIntern]
     )
-    def get_user_groups(self, request):
-        queryset = Bunch.objects.prefetch_related("members").filter(members=request.user)
-        return Response(BunchSerializer(queryset, many=True).data)
+    def intern_groups(self, request, email=None):
+        queryset = Bunch.objects.prefetch_related("members", "mentors").filter(members=request.user).all()
+        serializer = BunchRetrieveSerializer(queryset, many=True)
+        return Response(
+            data=serializer.data,
+            status="200"
+        )

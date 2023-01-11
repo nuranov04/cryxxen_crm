@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from apps.development.boards.models import Board, Task, Status
+
+admin.site.register(Board)
