@@ -9,7 +9,7 @@ router.register(
     viewset=HomeWorkApiViewSet
 )
 router.register(
-    prefix="homeworks/urls/create",
+    prefix="homework_urls",
     viewset=HomeworkUrlApiViewSet
 )
 

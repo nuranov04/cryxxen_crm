@@ -55,6 +55,7 @@ client_side_api_urlpatterns_v1 = [
 
     # main side
     path("", include("apps.main.users.urls")),
+    path("directions/", include("apps.main.directions.urls")),
 
     # docs
     path(

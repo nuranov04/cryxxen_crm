@@ -1,9 +1,9 @@
 from django.db import models
 
-from utils.models import BaseModel
+from utils.models import BaseModel, SingletonModel
 
 
-class AboutUs(BaseModel):
+class AboutUs(BaseModel, SingletonModel):
     content = models.TextField(
         verbose_name="content"
     )
@@ -14,10 +14,19 @@ class AboutUs(BaseModel):
     def __str__(self):
         return str(self.id)
 
-    def save(self, *args, **kwargs):
-        if AboutUs.objects.all().count() < 1:
-            return super().save(*args, **kwargs)
-
     class Meta:
         verbose_name = "About Us",
         verbose_name_plural = "About Us"
+
+
+class AboutInternship(BaseModel, SingletonModel):
+    content = models.TextField(
+        verbose_name="content"
+    )
+
+    def __str__(self):
+        return str(self.id)
+
+    class Meta:
+        verbose_name = "About Internship"
+        verbose_name_plural = "About Internship"

@@ -1,17 +1,11 @@
-from rest_framework.viewsets import GenericViewSet
-from rest_framework import mixins
+from rest_framework import mixins, viewsets
 
 from apps.internship.homeworks.models import Homework, HomeworkUrl
 from apps.internship.homeworks.serializers import HomeworkSerializer, HomeworkUrlSerializer, HomeworkDetailSerializer
 from utils.permissions import GrMentor
 
 
-class HomeWorkApiViewSet(GenericViewSet,
-                         mixins.ListModelMixin,
-                         mixins.CreateModelMixin,
-                         mixins.RetrieveModelMixin,
-                         mixins.UpdateModelMixin,
-                         mixins.DestroyModelMixin):
+class HomeWorkApiViewSet(viewsets.ModelViewSet):
     queryset = Homework.objects.select_related("creator", "group").all()
     serializer_class = HomeworkSerializer
     permission_classes = [GrMentor]
@@ -22,8 +16,11 @@ class HomeWorkApiViewSet(GenericViewSet,
         return HomeworkSerializer
 
 
-class HomeworkUrlApiViewSet(GenericViewSet,
-                            mixins.CreateModelMixin):
+class HomeworkUrlApiViewSet(viewsets.GenericViewSet,
+                            mixins.CreateModelMixin,
+                            mixins.UpdateModelMixin,
+                            mixins.DestroyModelMixin,
+                            ):
     queryset = HomeworkUrl.objects.all()
     serializer_class = HomeworkUrlSerializer
     permission_classes = [GrMentor]

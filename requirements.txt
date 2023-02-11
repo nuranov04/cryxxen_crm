@@ -8,6 +8,7 @@ coreapi==2.3.3
 coreschema==0.0.4
 Django==4.1.4
 django-cors-headers==3.13.0
+django-filter==22.1
 django-modeltranslation==0.18.7
 django-storages==1.13.2
 djangorestframework==3.14.0

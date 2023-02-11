@@ -13,7 +13,6 @@ class BunchAdmin(admin.ModelAdmin):
         "direction",
     )
     inlines = [
-        # HomeworkTypeInline,
         HomeworkInline,
     ]
 

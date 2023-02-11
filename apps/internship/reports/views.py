@@ -10,7 +10,9 @@ from utils.permissions import IsIntern
 
 
 class ReportApiViewSet(GenericViewSet,
-                       mixins.CreateModelMixin):
+                       mixins.CreateModelMixin,
+                       mixins.UpdateModelMixin
+                       ):
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
     permission_classes = [IsIntern]
@@ -23,3 +25,4 @@ class ReportApiViewSet(GenericViewSet,
         if reviews >= 1:
             return Response(data={"error": "you can't create two reports a day"})
         return super().create(request, *args, **kwargs)
+
