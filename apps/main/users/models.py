@@ -1,17 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-from apps.main.roles.models import Role
 from apps.main.users.managers import CustomUserManager
 
 
 class User(AbstractUser):
-    status = models.ForeignKey(
-        Role,
-        on_delete=models.DO_NOTHING,
-        related_name="users",
-        blank=True, null=True,
-        default=5,
+    class UserStatusChoice(models.TextChoices):
+        admin = 1
+        trainer = 2
+        mentor = 3
+        intern = 4
+        guest = 5
+
+    status = models.CharField(
+        choices=UserStatusChoice.choices,
+        default=UserStatusChoice.guest,
+        max_length=256
     )
     email = models.EmailField(
         unique=True

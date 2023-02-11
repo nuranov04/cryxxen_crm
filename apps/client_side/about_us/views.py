@@ -1,12 +1,16 @@
 from rest_framework.viewsets import GenericViewSet
-from rest_framework.mixins import ListModelMixin
+from rest_framework import mixins
 
 from apps.client_side.about_us.models import AboutUs
 from apps.client_side.about_us.serializers import AboutUsSerializer
 
 
 class AboutUsApiViewSet(GenericViewSet,
-                        ListModelMixin):
+                        mixins.ListModelMixin,
+                        mixins.CreateModelMixin,
+                        mixins.DestroyModelMixin,
+                        mixins.UpdateModelMixin
+                        ):
     queryset = AboutUs.objects.all()
     serializer_class = AboutUsSerializer
 

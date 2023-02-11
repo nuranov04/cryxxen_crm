@@ -8,7 +8,7 @@ from rest_framework import status
 from rest_framework.viewsets import ModelViewSet
 
 from apps.internship.groups.models import Bunch
-from apps.internship.groups.serializers import BunchRetrieveSerializer
+from apps.internship.groups.serializers import BunchShortInfoSerializer
 from utils import permissions
 from apps.main.users.serializers import (
     UserSerializer,
@@ -21,7 +21,7 @@ User = get_user_model()
 
 
 class UserApiViewSet(ModelViewSet):
-    queryset = User.objects.select_related("status").all()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
 
     def get_serializer_class(self):
@@ -85,8 +85,19 @@ class UserApiViewSet(ModelViewSet):
         methods=["GET"], detail=False, url_path="intern_groups", permission_classes=[permissions.IsIntern]
     )
     def intern_groups(self, request, email=None):
-        queryset = Bunch.objects.prefetch_related("members", "mentors").filter(members=request.user).all()
-        serializer = BunchRetrieveSerializer(queryset, many=True)
+        queryset = Bunch.objects.prefetch_related("members", "mentors").filter(members=request.user).last()
+        serializer = BunchShortInfoSerializer(queryset)
+        return Response(
+            data=serializer.data,
+            status="200"
+        )
+
+    @action(
+        methods=["GET"], detail=False, url_path="mentor_groups", permission_classes=[permissions.IsMentor]
+    )
+    def mentor_groups(self, request, email=None):
+        queryset = Bunch.objects.filter(mentors=request.user).all()
+        serializer = BunchShortInfoSerializer(queryset, many=True)
         return Response(
             data=serializer.data,
             status="200"

@@ -11,47 +11,68 @@ class UserTypes:
 
 class IsIntern(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user and request.user.is_authenticated and request.user.status.id == UserTypes.intern)
+        if request.user.is_authenticated:
+            return bool(int(request.user.status) == UserTypes.intern)
+        return False
 
 
 class IsMentor(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user.is_authenticated and request.user.status.id == UserTypes.mentor)
+        if request.user.is_authenticated:
+            return bool(int(request.user.status) == UserTypes.mentor)
+        return False
 
 
 class IsTrainer(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user.is_authenticated and request.user.status.id == UserTypes.trainer)
+        if request.user.is_authenticated:
+            return bool(int(request.user.status) == UserTypes.trainer)
+        return False
 
 
 class IsAdmin(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user.is_authenticated and request.user.status.id == UserTypes.admin)
+        if request.user.is_authenticated:
+            return bool(int(request.user.status) == UserTypes.admin)
+        return False
+
+
+class GrTrainer(BasePermission):
+    def has_permission(self, request, view):
+        if request.user.is_authenticated:
+            return bool(int(request.user.status) <= UserTypes.trainer)
+        return False
 
 
 class GrMentor(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user.is_authenticated and request.user.status.id <= UserTypes.mentor)
+        if request.user.is_authenticated:
+            return bool(int(request.user.status) <= UserTypes.mentor)
+        return False
 
 
 class GrInter(BasePermission):
-
     def has_permission(self, request, view):
-        return bool(request.user.is_authenticated and request.user.status.id <= UserTypes.intern)
+        if request.user.is_authenticated:
+            return bool(int(request.user.status) <= UserTypes.intern)
+        return False
 
 
 class LsInter(BasePermission):
 
     def has_permission(self, request, view):
-        return bool(request.user.is_authenticated and request.user.status.id >= UserTypes.intern)
+        if request.user.is_authenticated:
+            return bool(int(request.user.status) >= UserTypes.intern)
+        return False
 
 
 class AllowAny(BasePermission):
     def has_permission(self, request, view):
-        return bool(request.user.is_authenticated and
-                    request.user.status.id in (
-                        UserTypes.intern,
-                        UserTypes.mentor,
-                        UserTypes.trainer,
-                        UserTypes.admin,
-                    ))
+        if request.user.is_authenticated:
+            return bool(int(request.user.status) in (
+                UserTypes.intern,
+                UserTypes.mentor,
+                UserTypes.trainer,
+                UserTypes.admin,
+            ))
+        return False

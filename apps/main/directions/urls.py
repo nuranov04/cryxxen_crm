@@ -1,13 +1,12 @@
 from rest_framework.routers import DefaultRouter
 
-from apps.client_side.about_us.views import AboutUsApiViewSet
+from .views import DirectionApiViewSet
 
 
 router = DefaultRouter()
 router.register(
     prefix="",
-    viewset=AboutUsApiViewSet
+    viewset=DirectionApiViewSet
 )
-
 
 urlpatterns = router.urls

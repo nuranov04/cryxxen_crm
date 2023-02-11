@@ -1,19 +1,11 @@
-from rest_framework.response import Response
-from rest_framework.viewsets import GenericViewSet
-from rest_framework import mixins
-from rest_framework.decorators import action
+from rest_framework.viewsets import ModelViewSet
 
 from utils import permissions
 from apps.internship.groups.models import Bunch
 from apps.internship.groups.serializers import BunchSerializer, BunchRetrieveSerializer
 
 
-class BunchApiViewSet(GenericViewSet,
-                      mixins.ListModelMixin,
-                      mixins.CreateModelMixin,
-                      mixins.RetrieveModelMixin,
-                      mixins.UpdateModelMixin,
-                      mixins.DestroyModelMixin):
+class BunchApiViewSet(ModelViewSet):
     queryset = Bunch.objects.all().prefetch_related("members", "mentors").select_related("direction").all()
     serializer_class = BunchSerializer
     permission_classes = [permissions.IsIntern]
@@ -27,7 +19,3 @@ class BunchApiViewSet(GenericViewSet,
         if self.action == "retrieve":
             return BunchRetrieveSerializer
         return BunchSerializer
-
-
-
-

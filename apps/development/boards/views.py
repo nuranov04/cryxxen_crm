@@ -1,6 +1,5 @@
-from rest_framework import viewsets, mixins
+from rest_framework import viewsets, permissions
 
-from utils.permissions import IsTrainer
 from .models import Board, Task, Status
 from .serializers import BoardSerializer, BoardRetrieveSerializer, StatusSerializer, TaskSerializer
 
@@ -8,7 +7,7 @@ from .serializers import BoardSerializer, BoardRetrieveSerializer, StatusSeriali
 class BoardApiViewSet(viewsets.ModelViewSet):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
-    permission_classes = [IsTrainer]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_serializer_class(self):
         if self.action == "retrieve":
@@ -16,16 +15,14 @@ class BoardApiViewSet(viewsets.ModelViewSet):
         return BoardSerializer
 
     def get_queryset(self):
-        return Board.objects.prefetch_related("members").filter(members=self.request.user).all()
+        return Board.objects.prefetch_related("members").filter(members__id=self.request.user.id).all()
 
 
-class TaskApiViewSet(viewsets.GenericViewSet,
-                     mixins.CreateModelMixin):
+class TaskApiViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
 
-class StatusApiViewSet(viewsets.GenericViewSet,
-                       mixins.CreateModelMixin):
+class StatusApiViewSet(viewsets.ModelViewSet):
     queryset = Status.objects.all()
     serializer_class = StatusSerializer
