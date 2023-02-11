@@ -113,17 +113,17 @@ DATABASES = {
     #     'HOST': config('POSTGRES_HOST'),
     #     'PORT': '5432',
     # },
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': "CRYXXEN_CRM",
-    },
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': "CRYXXEN1$cryxxen",
-    #     'USER': "CRYXXEN1",
-    #     'PASSWORD': "a29102004",
-    #     'HOST': "CRYXXEN1.mysql.pythonanywhere-services.com",
-    # }
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': "CRYXXEN_CRM",
+    # },
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "CRYXXEN1$cryxxen",
+        'USER': "CRYXXEN1",
+        'PASSWORD': "a29102004",
+        'HOST': "CRYXXEN1.mysql.pythonanywhere-services.com",
+    }
 }
 
 # Password validation
