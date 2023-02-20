@@ -1,6 +1,15 @@
 version: '3.7'
 
 services:
+  redis:
+    image: redis:latest
+    container_name: redis_server
+    ports:
+      - '6379:6379'
+    expose:
+      - 6375
+    networks:
+      - my-network
 
   db:
     image: postgres:12.0-alpine
@@ -28,6 +37,22 @@ services:
       - db
     env_file:
       - ./.env
+
+  celery:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    container_name: celery-worker
+    command: bash -c "cd /app && celery -A core worker -l info"
+    networks:
+      - my-network
+    depends_on:
+      - db
+      - redis
+      - backend
+    env_file:
+      - ./.env
+    restart: always
 
   nginx:
     restart: unless-stopped
