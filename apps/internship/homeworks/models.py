@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 from apps.internship.groups.models import Bunch
-# from apps.internship.homeworks_types.models import HomeworkType
 
 User = get_user_model()
 

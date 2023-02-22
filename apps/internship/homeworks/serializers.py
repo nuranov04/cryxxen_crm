@@ -16,7 +16,9 @@ class HomeworkSerializer(ModelSerializer):
         model = Homework
         fields = (
             "id",
+            "group",
             "title",
+            "creator",
             "description",
             "deadline",
             "created_at",
