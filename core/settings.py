@@ -3,6 +3,9 @@ import os
 from datetime import timedelta
 from pathlib import Path
 
+import django
+
+from django.utils.encoding import force_str
 from django.utils.translation import gettext as _
 from decouple import config
 
@@ -66,6 +69,7 @@ THIRD_APPS = [
     "rest_framework_simplejwt",
     "corsheaders",
     'storages',
+    'graphene_django',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_APPS
@@ -274,7 +278,7 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-
+#
 # LOGGING = {
 #     'version': 1,
 #     'handlers': {
@@ -296,3 +300,10 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 #         'handlers': ['file'],
 #     }
 # }
+
+
+GRAPHENE = {
+        'SCHEMA': 'core.schema.schema'
+}
+
+django.utils.encoding.force_text = force_str

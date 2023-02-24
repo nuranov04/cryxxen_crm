@@ -10,6 +10,10 @@ from rest_framework_simplejwt.views import (
 )
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from graphene_django.views import GraphQLView
+
+from core.schema import schema
+
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -23,6 +27,10 @@ schema_view = get_schema_view(
     public=True,
     permission_classes=[permissions.AllowAny],
 )
+
+graphql_urls = [
+    path("graphql", GraphQLView.as_view(graphiql=True))
+]
 
 auth_urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -77,6 +85,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path("api/v1/", include(client_side_api_urlpatterns_v1)),
+    path("api/v1/", include(graphql_urls)),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

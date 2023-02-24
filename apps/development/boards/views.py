@@ -23,6 +23,7 @@ class TaskApiViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
 
 
+
 class StatusApiViewSet(viewsets.ModelViewSet):
     queryset = Status.objects.all()
     serializer_class = StatusSerializer

@@ -23,8 +23,6 @@ class StatusSerializer(ModelSerializer):
 
 
 class BoardSerializer(ModelSerializer):
-    members = UserShortInfoSerializer(many=True)
-
     class Meta:
         model = Board
         fields = "__all__"
@@ -32,6 +30,7 @@ class BoardSerializer(ModelSerializer):
 
 class BoardRetrieveSerializer(ModelSerializer):
     statuses = SerializerMethodField(read_only=True)
+    members = UserShortInfoSerializer(many=True)
 
     class Meta:
         model = Board

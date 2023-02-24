@@ -18,7 +18,7 @@ class HomeworkSerializer(ModelSerializer):
             "id",
             "group",
             "title",
-            "creator",
+            # "creator",
             "description",
             "deadline",
             "created_at",

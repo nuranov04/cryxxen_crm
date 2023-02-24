@@ -15,8 +15,8 @@ class HomeWorkApiViewSet(viewsets.ModelViewSet):
             return HomeworkDetailSerializer
         return HomeworkSerializer
 
-    # def perform_create(self, serializer):
-    #     return serializer.save(creator=self.request.user)
+    def perform_create(self, serializer):
+        return serializer.save(creator=self.request.user)
 
 
 class HomeworkUrlApiViewSet(viewsets.GenericViewSet,
