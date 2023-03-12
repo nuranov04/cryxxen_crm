@@ -1,3 +1,4 @@
+from rest_framework.decorators import action
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
@@ -14,3 +15,4 @@ class AboutUsApiViewSet(GenericViewSet,
     queryset = AboutUs.objects.all()
     serializer_class = AboutUsSerializer
 
+    # @action()

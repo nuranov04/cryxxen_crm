@@ -30,3 +30,6 @@ class AboutInternship(BaseModel, SingletonModel):
     class Meta:
         verbose_name = "About Internship"
         verbose_name_plural = "About Internship"
+
+
+

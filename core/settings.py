@@ -278,7 +278,7 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-#
+
 # LOGGING = {
 #     'version': 1,
 #     'handlers': {
@@ -303,7 +303,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 GRAPHENE = {
-        'SCHEMA': 'core.schema.schema'
+    'SCHEMA': 'core.schema.schema'
 }
 
 django.utils.encoding.force_text = force_str
