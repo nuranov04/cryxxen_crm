@@ -10,3 +10,4 @@ ADD ./docker /app/docker
 ADD ./ /app/
 RUN ["chmod", "+x", "/app/docker/backend/wsgi-entrypoint.sh"]
 EXPOSE 8000
+EXPOSE 8000
