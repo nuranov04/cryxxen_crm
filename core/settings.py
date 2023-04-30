@@ -123,12 +123,12 @@ DATABASES = {
     },
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': "CRYXXEN1$cryxxen",
-    #     'USER': "CRYXXEN1",
-    #     'PASSWORD': "a29102004",
-    #     'HOST': "CRYXXEN1.mysql.pythonanywhere-services.com",
+    #     'NAME': config('PYTHONANYWHERE_DB_NAME'),
+    #     'USER': config('PYTHONANYWHERE_DB_USER'),
+    #     'PASSWORD': config('PYTHONANYWHERE_DB_PASSWORD'),
+    #     'HOST': config('PYTHONANYWHERE_DB_HOST'),
     #     "TEST": {
-    #         'NAME': "CRYXXEN1$test_cryxxen"
+    #         'NAME': config('PYTHONANYWHERE_DB_TEST_NAME')
     #     }
     # }
 }
@@ -185,12 +185,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 }
 
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
-    'AUTH_HEADER_TYPES': ('JWT',),
-}
-
 gettext = lambda s: s
 
 LANGUAGES = (
@@ -234,8 +228,8 @@ else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
-    'REFRESH_TOKEN_LIFETIME': timedelta(minutes=120),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
     'UPDATE_LAST_LOGIN': False,
@@ -265,11 +259,9 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(minutes=240),
 }
 
-CELERY_BROKER_URL = 'redis://redis:6379'
-CELERY_RESULT_BACKEND = 'redis://redis:6379'
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 
-# CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
-# CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -278,29 +270,6 @@ EMAIL_USE_SSL = False
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-
-# LOGGING = {
-#     'version': 1,
-#     'handlers': {
-#         'console': {
-#             'class': 'logging.StreamHandler',
-#         },
-#         'file': {
-#             'level': 'DEBUG',
-#             'class': 'logging.FileHandler',
-#             'filename': 'media/logs/db.log',
-#         },
-#     },
-#     'loggers': {
-#         'django.db.backends': {
-#             'level': 'DEBUG',
-#         },
-#     },
-#     'root': {
-#         'handlers': ['file'],
-#     }
-# }
-
 
 GRAPHENE = {
     'SCHEMA': 'core.schema.schema'
