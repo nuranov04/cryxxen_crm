@@ -83,6 +83,7 @@ client_side_api_urlpatterns_v1 = [
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include("rest_framework.urls")),
 
     path("api/v1/", include(client_side_api_urlpatterns_v1)),
     path("api/v1/", include(graphql_urls)),
